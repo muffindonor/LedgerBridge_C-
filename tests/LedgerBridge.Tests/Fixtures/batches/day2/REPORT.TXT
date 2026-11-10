@@ -1,0 +1,25 @@
+BANKBTCH - NIGHTLY ACCOUNT UPDATE REPORT
+
+ACCOUNT     NAME                        TXNS             OPENING             CLOSING
+1000000001  ALICE COHEN                    1            2,800.00            2,900.00
+1000000002  BOB MIZRAHI                    1            9,030.00            9,052.58
+1000000003  CAROL PERETZ                   1              125.50              120.50
+1000000004  DAVID AZULAI                   0            5,000.00            5,000.00
+1000000005  EVE SHAPIRO                    1            8,020.50            8,040.55
+1000000006  FRANK BITON                    0                0.00                0.00
+1000000007  GRACE OHANA                    0               50.00               50.00
+
+CONTROL TOTALS
+OPENING BALANCE                               25,026.00
+DEPOSITS                                         100.00
+INTEREST                                          42.63
+WITHDRAWALS                                        5.00
+EXPECTED CLOSING                              25,163.63
+ACTUAL CLOSING                                25,163.63
+ACCOUNTS READ                                         7
+ACCOUNTS WRITTEN                                      7
+TRANSACTIONS READ                                     6
+TRANSACTIONS APPLIED                                  4
+TRANSACTIONS REJECTED                                 2
+
+IN BALANCE

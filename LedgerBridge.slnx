@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/benchmarks/">
+    <Project Path="benchmarks/LedgerBridge.Benchmarks/LedgerBridge.Benchmarks.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/LedgerBridge.Api/LedgerBridge.Api.csproj" />
+    <Project Path="src/LedgerBridge.Cobol/LedgerBridge.Cobol.csproj" />
+    <Project Path="src/LedgerBridge.Core/LedgerBridge.Core.csproj" />
+    <Project Path="src/LedgerBridge.Worker/LedgerBridge.Worker.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/LedgerBridge.Tests/LedgerBridge.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/LedgerBridge.Tools/LedgerBridge.Tools.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,47 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ledger
+      POSTGRES_USER: ledger
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-dev-only}
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ledger -d ledger"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  worker:
+    build:
+      context: .
+      target: worker
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ConnectionStrings__Ledger: Host=postgres;Database=ledger;Username=ledger;Password=${POSTGRES_PASSWORD:-local-dev-only}
+      Inbox__Path: /data/inbox
+      Inbox__ArchivePath: /data/archive
+      Inbox__RejectedPath: /data/rejected
+      Inbox__PollSeconds: 3
+    volumes:
+      - ./data:/data
+
+  api:
+    build:
+      context: .
+      target: api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ConnectionStrings__Ledger: Host=postgres;Database=ledger;Username=ledger;Password=${POSTGRES_PASSWORD:-local-dev-only}
+    ports:
+      - "127.0.0.1:8085:8080"
+
+volumes:
+  pgdata:

@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet build LedgerBridge.slnx -c Release
+      # Uses Testcontainers, which needs the Docker that GitHub's runners already have.
+      - run: dotnet test tests/LedgerBridge.Tests -c Release --no-build
