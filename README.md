@@ -124,4 +124,3 @@ A batch is rejected, with nothing posted, if any of these fail.
 - `REDEFINES` and `OCCURS` in copybooks are refused with a clear error rather than handled.
 - The API has no authentication. It's bound to localhost in Docker and must not be exposed as it is.
 - Reconciliation sums the whole ledger each night, so that step will slow down as years of history build up.
-- The GitHub Actions workflow is written but hasn't run yet.
