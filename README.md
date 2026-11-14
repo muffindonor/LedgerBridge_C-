@@ -36,11 +36,11 @@ Measured on a Windows desktop with PostgreSQL in Docker and normal durable commi
 | What was tested | Result |
 |---|---|
 | Automated tests, against real PostgreSQL | 112 of 112 pass |
-| Hard kills of the worker process, across 10 full runs | 51 kills, all while posting. 10 of 10 ledgers correct to the cent |
-| Same kill test on a typical loader that saves progress separately | 78 kills. 10 of 10 ledgers wrong, with 23,034 to 42,095 duplicate entries per run |
-| Deliberate bugs injected to test the tests | 19 of 19 caught |
-| Full run: validate, post and reconcile | 13.6 seconds, about 29,000 transactions a second |
-| Decoder against a typical string-based parser, 100,000 records | 4.7 times faster. 1 MB allocated against 22 MB |
+| Hard kills of the worker process, across 10 full runs | 62 kills, 61 of them while posting. 10 of 10 ledgers correct to the cent |
+| Same kill test on a typical loader that saves progress separately | 64 kills. 10 of 10 ledgers wrong, with 12,026 to 40,085 duplicate entries per run |
+| Deliberate bugs injected to test the tests | 19 of 19 caught (measured once on 2026-11-09 with a throwaway script that is not in this repo) |
+| Full run: validate, post and reconcile | 17.2 seconds, about 23,000 transactions a second (one run on one desktop; other runs took 13.6 s) |
+| Decoder against a typical string-based parser, 100,000 records | 4.6 times faster. 1 MB allocated against 22 MB |
 
 The 1 MB is the fixed read buffer, which stays the same however large the file is. The crash test reads the COBOL files with plain string slicing, so a bug in the decoder couldn't hide itself.
 
